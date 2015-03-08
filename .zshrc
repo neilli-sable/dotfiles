@@ -53,6 +53,17 @@ if [ -d ${HOME}/.zsh/zsh-completions/src ] ; then
    #compinit
 fi
 
+## Show git repos status
+autoload -Uz vcs_info
+setopt prompt_subst
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
+zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
+zstyle ':vcs_info:*' formats "%F{green}%c%u[%b]%f"
+zstyle ':vcs_info:*' actionformats '[%b|%a]'
+precmd () { vcs_info }
+RPROMPT='${vcs_info_msg_0_}'
+
 ## Alias
 alias gst="git status"
 alias gb="git branch -a"
