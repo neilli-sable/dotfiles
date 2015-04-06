@@ -37,7 +37,7 @@ compinit
 
 PROMPT="%/%% "
 PROMPT2="%_%% "
-SPROMPT="%r is correct? [n,y,a,e]: " 
+SPROMPT="%r is correct? [n,y,a,e]: "
 
 ## Tomcatの環境変数
 export CATALINA_HOME=/usr/share/tomcat7
@@ -66,11 +66,28 @@ RPROMPT='${vcs_info_msg_0_}'
 
 ## Alias
 alias gst="git status"
-alias gb="git branch -a"
-alias gls="git log --pretty=short"
+alias gb="git branch"
+alias gsl="git stash list"
+alias gln="git log --pretty=short --name-status"
+alias gls="git log --oneline"
+alias ga='git add'
+alias gap="git add -p"
+alias gaa='git add .'
+alias gaaa='git add -A'
+alias gb='git branch'
+alias gbd='git branch -d '
+alias gd='git diff'
+alias gc='git commit'
+alias gca='git commit -a'
+alias gcm='git commit -m'
+alias gco='git checkout'
+alias gcob='git checkout -b'
+alias gcom='git checkout master'
+
+alias rspec='rspec -c'
 alias ls="ls -la --color"
 alias vi="vim"
-alias gln="git log --name-status --pretty=short"
+
 
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
@@ -89,4 +106,3 @@ zstyle ':completion:*' verbose true
 
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
-
