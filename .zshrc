@@ -66,7 +66,6 @@ RPROMPT='${vcs_info_msg_0_}'
 
 ## Alias
 alias gst="git status"
-alias gb="git branch"
 alias gsl="git stash list"
 alias gln="git log --pretty=short --name-status"
 alias gls="git log --oneline"
@@ -74,7 +73,7 @@ alias ga='git add'
 alias gap="git add -p"
 alias gaa='git add .'
 alias gaaa='git add -A'
-alias gb='git branch'
+alias gb="git branch -a"
 alias gbd='git branch -d '
 alias gd='git diff'
 alias gc='git commit'
@@ -85,11 +84,13 @@ alias gcob='git checkout -b'
 alias gcom='git checkout master'
 
 alias rspec='rspec -c'
+
 alias ls="ls -la --color"
 alias vi="vim"
 
 alias tarC='tar zcvf'
 alias tarM='tar zxvf'
+
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*' format 'Completing %d'
