@@ -88,7 +88,8 @@ alias rspec='rspec -c'
 alias ls="ls -la --color"
 alias vi="vim"
 
-
+alias tarC='tar zcvf'
+alias tarM='tar zxvf'
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*' format 'Completing %d'
