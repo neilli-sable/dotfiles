@@ -47,8 +47,8 @@ export CATALINA_BASE=/home/seiya/www/tomcat7
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
-## nodejs
-export NODEPATH=/usr/lib/node_modules
+## nodebrew
+export PATH=$HOME/.nodebrew/current/bin:$PATH
 
 # zsh-completions
 if [ -d ${HOME}/.zsh/zsh-completions/src ] ; then
