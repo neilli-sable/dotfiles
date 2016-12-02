@@ -88,8 +88,16 @@ alias gcom='git checkout master'
 
 alias rspec='rspec -c'
 
-alias ls="ls -la --color"
-alias vi="vim"
+case "${OSTYPE}" in
+darwin*)
+  alias ls="ls -G"
+  ;;
+linux*)
+  alias ls='ls -la --color'
+  ;;
+esac
+
+alias vi='vim'
 
 alias tarC='tar zcvf'
 alias tarM='tar zxvf'
