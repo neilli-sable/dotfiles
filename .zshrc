@@ -96,7 +96,7 @@ alias rspec='rspec -c'
 
 case "${OSTYPE}" in
 darwin*)
-  alias ls="ls -G"
+  alias ls="ls -laG"
   ;;
 linux*)
   alias ls='ls -la --color'
@@ -108,12 +108,32 @@ alias vi='vim'
 alias tarC='tar zcvf'
 alias tarM='tar zxvf'
 
+if [[ -n "$PS1" ]]; then
+  cd() {
+    histf=$HOME/.zsh_history
+    if [ $# -eq 1 ]; then
+      builtin cd $1
+      if [ $? -ne 0 ] ; then
+        return 1
+      fi
+      echo "cd" $PWD >> $histf
+      fc -R
+    else
+      builtin cd $*
+    fi
+  }
+fi
+
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*' format 'Completing %d'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' menu select=2
-eval "$(dircolors -b)"
+case "${OSTYPE}" in
+linux*)
+  eval "$(dircolors -b)"
+  ;;
+esac
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
