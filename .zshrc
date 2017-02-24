@@ -85,6 +85,13 @@ alias gco='git checkout'
 alias gcob='git checkout -b'
 alias gcom='git checkout master'
 
+alias dps="docker ps"
+alias dsr="docker start"
+alias dsp="docker stop"
+alias drm="docker rm"
+alias dl="docker ps -l -q"
+alias dstopall="docker stop `docker ps -aq`"
+alias drmall="docker rm `docker ps -aq`"
 alias rspec='rspec -c'
 
 case "${OSTYPE}" in
