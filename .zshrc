@@ -43,6 +43,12 @@ SPROMPT="%r is correct? [n,y,a,e]: "
 export CATALINA_HOME=/usr/share/tomcat7
 export CATALINA_BASE=/home/seiya/www/tomcat7
 
+##anyenv
+export PATH="$HOME/.anyenv/bin:$PATH"
+eval "$(anyenv init -)"
+
+export GOPATH=$HOME/.go
+
 # zsh-completions
 if [ -d ${HOME}/.zsh/zsh-completions/src ] ; then
    fpath=(${HOME}/.zsh/zsh-completions/src $fpath)
