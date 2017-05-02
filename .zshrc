@@ -49,6 +49,9 @@ eval "$(anyenv init -)"
 
 export GOPATH=$HOME/.go
 
+## golang
+export PATH="$HOME/.go/bin:$PATH"
+
 # zsh-completions
 if [ -d ${HOME}/.zsh/zsh-completions/src ] ; then
    fpath=(${HOME}/.zsh/zsh-completions/src $fpath)
