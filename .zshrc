@@ -51,6 +51,9 @@ eval "$(anyenv init -)"
 export GOPATH=$HOME
 export PATH="$HOME/.go/bin:$PATH"
 
+## rust
+source $HOME/.cargo/env
+
 # zsh-completions
 if [ -d ${HOME}/.zsh/zsh-completions/src ] ; then
    fpath=(${HOME}/.zsh/zsh-completions/src $fpath)
