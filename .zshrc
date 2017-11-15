@@ -95,11 +95,16 @@ alias dps="docker ps"
 alias dpsa="docker ps -a"
 alias dstart="docker start"
 alias dstop="docker stop"
+alias dre="docker restart"
 alias drm="docker rm"
 alias dl="docker ps -l -q"
 alias dstopall="docker stop `docker ps -aq`"
 alias drmall="docker rm `docker ps -aq`"
+alias dc="docker-compose"
 alias rspec='rspec -c'
+
+#aws
+alias getlatestamazonlinux="aws ec2 describe-images --region us-west-2 --owners amazon --filters \"Name=name,Values=amzn-ami-hvm-*-gp2\" --query 'reverse(sort_by(Images,&CreationDate))[0].ImageId' --output text"
 
 case "${OSTYPE}" in
 darwin*)
