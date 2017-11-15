@@ -47,9 +47,8 @@ export CATALINA_BASE=/home/seiya/www/tomcat7
 export PATH="$HOME/.anyenv/bin:$PATH"
 eval "$(anyenv init -)"
 
-export GOPATH=$HOME/.go
-
 ## golang
+export GOPATH=$HOME
 export PATH="$HOME/.go/bin:$PATH"
 
 # zsh-completions
