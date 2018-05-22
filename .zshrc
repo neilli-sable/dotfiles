@@ -60,6 +60,9 @@ if [ -d ${HOME}/.zsh/zsh-completions/src ] ; then
    #compinit
 fi
 
+# apache Spark
+export SPARK_HOME=/usr/local/spark
+
 ## Show git repos status
 autoload -Uz vcs_info
 setopt prompt_subst
