@@ -11,6 +11,8 @@ setopt auto_cd
 setopt correct
 setopt magic_equal_subst
 
+_byobu_sourced=1 . /usr/bin/byobu-launch 2>/dev/null || true
+
 ## ヒストリを保存するファイル
 HISTFILE=~/.zsh_history
 ## メモリ上のヒストリ数。
