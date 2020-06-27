@@ -11,8 +11,6 @@ setopt auto_cd
 setopt correct
 setopt magic_equal_subst
 
-_byobu_sourced=1 . /usr/bin/byobu-launch 2>/dev/null || true
-
 ## ヒストリを保存するファイル
 HISTFILE=~/.zsh_history
 ## メモリ上のヒストリ数。
@@ -53,13 +51,14 @@ eval "$(anyenv init -)"
 export GOENV_ROOT="$HOME/.goenv"
 export PATH="$GOENV_ROOT/bin:$PATH"
 #eval "$(goenv init -)"
-export GOROOT=$HOME/.anyenv/envs/goenv/versions/1.12.0
+export GOROOT=$HOME/.goenv/versions/1.14.4
 export GOPATH=$HOME
 export PATH="$GOROOT/bin:$PATH"
 export PATH="$GOPATH/bin:$PATH"
 ## rust
 source $HOME/.cargo/env
-
+#dotnet
+export DOTNET_ROOT=/snap/dotnet-runtime-31/current 
 # zsh-completions
 if [ -d ${HOME}/.zsh/zsh-completions/src ] ; then
    fpath=(${HOME}/.zsh/zsh-completions/src $fpath)
@@ -173,14 +172,3 @@ export PATH="$HOME/bin:$PATH"
 export PATH=$PATH:$HOME/Library/Android/sdk/platform-tools
 export PATH=$PATH:$HOME/.composer/vendor/bin
 eval "$(direnv hook zsh)"
-
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[[ -f /home/neilli/.anyenv/envs/ndenv/versions/v10.4.1/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /home/neilli/.anyenv/envs/ndenv/versions/v10.4.1/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[[ -f /home/neilli/.anyenv/envs/ndenv/versions/v10.4.1/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /home/neilli/.anyenv/envs/ndenv/versions/v10.4.1/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/neilli/.sdkman"
-[[ -s "/home/neilli/.sdkman/bin/sdkman-init.sh" ]] && source "/home/neilli/.sdkman/bin/sdkman-init.sh"
