@@ -117,6 +117,18 @@ alias rspec='rspec -c'
 #aws
 alias getlatestamazonlinux="aws ec2 describe-images --region us-west-2 --owners amazon --filters \"Name=name,Values=amzn-ami-hvm-*-gp2\" --query 'reverse(sort_by(Images,&CreationDate))[0].ImageId' --output text"
 
+# ghq & peco
+bindkey '^]' peco-src
+function peco-src() {
+  local src=$(ghq list --full-path | peco --query "$LBUFFER")
+  if [ -n "$src" ]; then
+	  BUFFER="cd $src"
+	  zle accept-line
+  fi
+  zle -R -c
+}
+zle -N peco-src
+
 case "${OSTYPE}" in
 darwin*)
   alias ls="ls -laG"
