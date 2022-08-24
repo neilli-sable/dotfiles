@@ -11,6 +11,11 @@ setopt auto_cd
 setopt correct
 setopt magic_equal_subst
 
+# zsh-completions
+if [ -d ${HOME}/.zsh/zsh-completions/src ] ; then
+   fpath=(${HOME}/.zsh/zsh-completions/src $fpath)
+fi
+
 ## ヒストリを保存するファイル
 HISTFILE=~/.zsh_history
 ## メモリ上のヒストリ数。
@@ -33,7 +38,7 @@ setopt no_flow_control
 
 ## 初期化
 autoload -U compinit
-compinit
+compinit -u
 
 PROMPT="%/%% "
 PROMPT2="%_%% "
@@ -43,27 +48,26 @@ SPROMPT="%r is correct? [n,y,a,e]: "
 export CATALINA_HOME=/usr/share/tomcat7
 export CATALINA_BASE=/home/seiya/www/tomcat7
 
+export JAVA_HOME=/snap/android-studio/current/android-studio/jre
+export PATH=$JAVA_HOME/bin:$PATH
+
 ##anyenv
 export PATH="$HOME/.anyenv/bin:$PATH"
 eval "$(anyenv init -)"
 
 ## golang
-export GOENV_ROOT="$HOME/.goenv"
-export PATH="$GOENV_ROOT/bin:$PATH"
-#eval "$(goenv init -)"
-export GOROOT=$HOME/.goenv/versions/1.14.4
+export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME
-export PATH="$GOROOT/bin:$PATH"
-export PATH="$GOPATH/bin:$PATH"
+#export GOENV_ROOT="$HOME/.goenv"
+#export PATH="$GOENV_ROOT/bin:$PATH"
+#export GOROOT=$HOME/.goenv/versions/1.15.3
+#export PATH="$GOROOT/bin:$PATH"
+#export PATH="$GOPATH/bin:$PATH"
+
 ## rust
 source $HOME/.cargo/env
 #dotnet
 export DOTNET_ROOT=/snap/dotnet-runtime-31/current 
-# zsh-completions
-if [ -d ${HOME}/.zsh/zsh-completions/src ] ; then
-   fpath=(${HOME}/.zsh/zsh-completions/src $fpath)
-   #compinit
-fi
 
 # apache Spark
 export SPARK_HOME=/usr/local/spark
