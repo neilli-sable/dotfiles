@@ -1,0 +1,35 @@
+{
+  $schema: "https://docs.renovatebot.com/renovate-schema.json",
+
+  extends: ["config:recommended"],
+
+  enabledManagers: ["github-actions", "mise"],
+  dependencyDashboard: true,
+  osvVulnerabilityAlerts: true,
+
+  packageRules: [
+    {
+      description:
+        "Delay non-security updates for mise-managed tools to reduce supply-chain risk",
+      matchManagers: ["mise"],
+      matchFileNames: [".config/mise/config.toml"],
+      minimumReleaseAge: "3 days",
+      internalChecksFilter: "strict",
+    },
+    {
+      description:
+        "Delay non-security GitHub Actions updates to reduce supply-chain risk",
+      matchManagers: ["github-actions"],
+      minimumReleaseAge: "3 days",
+      internalChecksFilter: "strict",
+    },
+  ],
+
+  vulnerabilityAlerts: {
+    enabled: true,
+    minimumReleaseAge: null,
+    prCreation: "immediate",
+    vulnerabilityFixStrategy: "lowest",
+    labels: ["security"],
+  },
+}
