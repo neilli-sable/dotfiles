@@ -1,0 +1,7 @@
+[tools]
+"aqua:k1LoW/mo" = "v1.2.0"
+gh = "latest"
+jq = "1.8.1"
+node = "25.9.0"
+"npm:renovate" = "43.110.8"
+terraform = "1.14.8"
