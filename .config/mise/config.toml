@@ -1,8 +1,10 @@
 [tools]
 "aqua:k1LoW/git-wt" = "0.26.2"
 "aqua:k1LoW/mo" = "v1.2.0"
+"aqua:yukiarrr/ecsk" = "0.9.3"
 aws-cli = { version = "2.34.30", symlink_bins = "true" }
 aws-vault = "7.9.15"
+claude = "2.1.108"
 gh = "2.89.0"
 ghq = "1.10.1"
 git-lfs = "3.7.1"
@@ -14,6 +16,7 @@ node = "24.14.1"
 packer = "1.15.1"
 peco = "0.6.0"
 sqlite = "3.53.0"
+starship = "1.24.2"
 terraform = "1.14.8"
 trivy = "0.69.3"
 zellij = "0.44.1"
