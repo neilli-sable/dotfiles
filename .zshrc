@@ -44,33 +44,9 @@ PROMPT="%/%% "
 PROMPT2="%_%% "
 SPROMPT="%r is correct? [n,y,a,e]: "
 
-## Tomcatの環境変数
-export CATALINA_HOME=/usr/share/tomcat7
-export CATALINA_BASE=/home/seiya/www/tomcat7
-
-export JAVA_HOME=/snap/android-studio/current/android-studio/jre
-export PATH=$JAVA_HOME/bin:$PATH
-
-##anyenv
-export PATH="$HOME/.anyenv/bin:$PATH"
-eval "$(anyenv init -)"
-
 ## golang
 export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME
-#export GOENV_ROOT="$HOME/.goenv"
-#export PATH="$GOENV_ROOT/bin:$PATH"
-#export GOROOT=$HOME/.goenv/versions/1.15.3
-#export PATH="$GOROOT/bin:$PATH"
-#export PATH="$GOPATH/bin:$PATH"
-
-## rust
-source $HOME/.cargo/env
-#dotnet
-export DOTNET_ROOT=/snap/dotnet-runtime-31/current 
-
-# apache Spark
-export SPARK_HOME=/usr/local/spark
 
 # common
 export PATH=~/.local/bin:$PATH
@@ -115,14 +91,13 @@ alias drm="docker rm"
 alias dl="docker ps -l -q"
 alias dstopall="docker stop `docker ps -aq`"
 alias drmall="docker rm `docker ps -aq`"
-alias dc="docker-compose"
-alias rspec='rspec -c'
+alias dc="docker compose"
 
 #aws
 alias getlatestamazonlinux="aws ec2 describe-images --region us-west-2 --owners amazon --filters \"Name=name,Values=amzn-ami-hvm-*-gp2\" --query 'reverse(sort_by(Images,&CreationDate))[0].ImageId' --output text"
 
 # ghq & peco
-bindkey '^]' peco-src
+bindkey '^\' peco-src
 function peco-src() {
   local src=$(ghq list --full-path | peco --query "$LBUFFER")
   if [ -n "$src" ]; then
@@ -131,6 +106,13 @@ function peco-src() {
   fi
   zle -R -c
 }
+
+function zd() {
+  local dir
+  dir=$(zoxide query -l | peco) && cd "$dir"
+}
+
+
 zle -N peco-src
 
 case "${OSTYPE}" in
@@ -187,4 +169,10 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 export PATH="$HOME/bin:$PATH"
 export PATH=$PATH:$HOME/Library/Android/sdk/platform-tools
 export PATH=$PATH:$HOME/.composer/vendor/bin
+eval "$(mise activate zsh)"
 eval "$(direnv hook zsh)"
+eval "$(zoxide init zsh --cmd cd)"
+eval "$(starship init zsh)"
+if [[ -z "$TMUX" && -z "$ZELLIJ" ]] && [[ "$TERM_PROGRAM" == "ghostty" || -n "$GHOSTTY_BIN" ]]; then
+  exec zellij
+fi
