@@ -14,7 +14,7 @@ glab = { version = "1.92.1", exe = "glab" }
 go = "1.26.2"
 jq = "1.8.1"
 neovim = "0.12.1"
-node = "24.14.1"
+node = "24.15.0"
 packer = "1.15.1"
 peco = "0.6.0"
 "pipx:yubikey-manager" = "5.9.1"
