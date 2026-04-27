@@ -4,7 +4,7 @@
 "aqua:k1LoW/git-wt" = "0.27.0"
 "aqua:k1LoW/mo" = "v1.3.0"
 "aqua:yukiarrr/ecsk" = "0.9.3"
-aws-cli = { version = "2.34.34", symlink_bins = "true" }
+aws-cli = { version = "2.34.36", symlink_bins = "true" }
 aws-vault = "7.9.15"
 direnv = "2.37.1"
 gh = "2.90.0"
