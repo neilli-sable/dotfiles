@@ -1,5 +1,5 @@
 [tools]
-"aqua:anthropics/claude-code" = "2.1.118"
+"aqua:anthropics/claude-code" = "2.1.120"
 "aqua:k1LoW/deck" = "1.23.1"
 "aqua:k1LoW/git-wt" = "0.27.0"
 "aqua:k1LoW/mo" = "v1.3.0"
