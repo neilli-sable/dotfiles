@@ -7,7 +7,7 @@
 aws-cli = { version = "2.34.37", symlink_bins = "true" }
 aws-vault = "7.9.15"
 direnv = "2.37.1"
-gh = "2.91.0"
+gh = "2.92.0"
 ghq = "1.10.1"
 git-lfs = "3.7.1"
 glab = { version = "1.92.1", exe = "glab" }
