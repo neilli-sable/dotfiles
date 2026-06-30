@@ -2,7 +2,7 @@
 "aqua:anthropics/claude-code" = "2.1.193"
 "aqua:k1LoW/deck" = "1.24.0"
 "aqua:k1LoW/git-wt" = "0.29.0"
-"aqua:k1LoW/mo" = "v1.6.2"
+"aqua:k1LoW/mo" = "v1.6.3"
 "aqua:yukiarrr/ecsk" = "0.9.5"
 aws-cli = { version = "2.35.11", symlink_bins = "true" }
 aws-vault = "7.9.15"
