@@ -1,6 +1,6 @@
 [tools]
 "aqua:anthropics/claude-code" = "2.1.202"
-"aqua:k1LoW/deck" = "1.24.0"
+"aqua:k1LoW/deck" = "1.24.1"
 "aqua:k1LoW/git-wt" = "0.29.0"
 "aqua:k1LoW/mo" = "v1.6.3"
 "aqua:yukiarrr/ecsk" = "0.9.5"
