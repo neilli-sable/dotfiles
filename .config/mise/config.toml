@@ -1,10 +1,10 @@
 [tools]
 "aqua:anthropics/claude-code" = "2.1.205"
-"aqua:k1LoW/deck" = "1.24.0"
+"aqua:k1LoW/deck" = "1.24.1"
 "aqua:k1LoW/git-wt" = "0.29.0"
 "aqua:k1LoW/mo" = "v1.6.3"
 "aqua:yukiarrr/ecsk" = "0.9.5"
-aws-cli = { version = "2.35.16", symlink_bins = "true" }
+aws-cli = { version = "2.35.19", symlink_bins = "true" }
 aws-vault = "7.9.15"
 direnv = "2.37.1"
 gh = "2.96.0"
@@ -25,7 +25,7 @@ ripgrep = "15.1.0"
 sqlite = "3.53.3"
 starship = "1.26.0"
 uv = "0.11.26"
-terraform = "1.15.7"
+terraform = "1.15.8"
 trivy = "0.72.0"
 zellij = "0.44.3"
 zoxide = "0.10.0"
