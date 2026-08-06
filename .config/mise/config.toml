@@ -15,7 +15,7 @@ glab = { version = "1.92.1", exe = "glab" }
 go = "1.26.5"
 jq = "1.8.2"
 neovim = "0.12.4"
-node = "24.18.1"
+node = "24.19.0"
 "npm:ccusage" = "20.0.19"
 packer = "1.16.0"
 peco = "0.6.0"
