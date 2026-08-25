@@ -10,7 +10,7 @@ direnv = "2.37.1"
 gh = "2.98.0"
 ghq = "1.10.1"
 git-lfs = "3.7.1"
-"github:microsoft/waza" = "v0.38.6"
+"github:microsoft/waza" = "v0.38.7"
 glab = { version = "1.92.1", exe = "glab" }
 go = "1.27.0"
 jq = "1.8.2"
