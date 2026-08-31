@@ -14,7 +14,7 @@ git-lfs = "3.7.1"
 glab = { version = "1.92.1", exe = "glab" }
 go = "1.27.0"
 jq = "1.8.2"
-neovim = "0.12.4"
+neovim = "0.12.5"
 node = "24.20.0"
 "npm:ccusage" = "20.0.20"
 packer = "1.16.0"
