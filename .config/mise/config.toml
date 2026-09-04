@@ -12,7 +12,7 @@ ghq = "1.10.1"
 git-lfs = "3.8.0"
 "github:microsoft/waza" = "v0.38.7"
 glab = { version = "1.92.1", exe = "glab" }
-go = "1.27.0"
+go = "1.27.1"
 jq = "1.8.2"
 neovim = "0.12.5"
 node = "24.20.0"
