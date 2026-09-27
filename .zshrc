@@ -95,6 +95,74 @@ alias dc="docker compose"
 
 #aws
 alias getlatestamazonlinux="aws ec2 describe-images --region us-west-2 --owners amazon --filters \"Name=name,Values=amzn-ami-hvm-*-gp2\" --query 'reverse(sort_by(Images,&CreationDate))[0].ImageId' --output text"
+# awsenv [プロファイル名]
+#   指定プロファイルの認証情報を環境変数に展開する。省略時は既定プロファイル
+#   （AWSENV_DEFAULT_PROFILE で変更可）。ロールを assume するプロファイルでも、
+#   別アカウントのプロファイルでも同じように使える。
+#
+#   認証は env に展開した一時クレデンシャルだけで行い、shared config のプロファイルは
+#   使わせない。そのため AWS_PROFILE には role_arn も認証情報も持たない中継用プロファイル
+#   （既定: awsenv、AWSENV_SHIM_PROFILE で変更可）を固定で指す。role_arn 付きを指すと
+#   ecsk 等が env を無視して自前で AssumeRole し直し、未設定だと default に、
+#   root（login）だと人の身元にフォールバックする。中継用プロファイルは認証情報を
+#   持たないので、一時クレデンシャルが失効すれば CLI も ecsk も fail closed する。
+#
+#   展開元のプロファイル名は AWSENV_PROFILE に入れる（表示用。AWS の解決には使わない）。
+awsenv() {
+  local profile="${1:-${AWSENV_DEFAULT_PROFILE:-login}}"
+
+  if ! aws configure list-profiles 2>/dev/null | grep -qx -- "$profile"; then
+    echo "awsenv: プロファイル '$profile' が ~/.aws/config にありません" >&2
+    return 1
+  fi
+
+  # source_profile を辿って role_arn を持たないプロファイル（＝ログイン元）を探す
+  local root="$profile" next hops=0
+  while [ -n "$(aws configure get role_arn --profile "$root" 2>/dev/null)" ]; do
+    next="$(aws configure get source_profile --profile "$root" 2>/dev/null)"
+    if [ -z "$next" ] || [ "$next" = "$root" ] || [ "$hops" -ge 8 ]; then
+      break
+    fi
+    root="$next"
+    hops=$((hops + 1))
+  done
+
+  if [ -n "$(aws configure get role_arn --profile "$root" 2>/dev/null)" ]; then
+    echo "awsenv: '$profile' の source_profile を辿れませんでした（root=$root）。~/.aws/config を確認してください" >&2
+    return 1
+  fi
+
+  local creds
+  if ! creds="$(aws --profile "$profile" configure export-credentials --format env 2>&1)"; then
+    echo "awsenv: '$profile' の認証情報を取得できません。まず 'aws login --profile $root' を実行してください" >&2
+    echo "  $creds" >&2
+    return 1
+  fi
+
+  unset AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN AWS_SECURITY_TOKEN \
+        AWS_CREDENTIAL_EXPIRATION AWS_PROFILE AWS_REGION AWS_DEFAULT_REGION
+  eval "$creds"
+
+  # 存在しない名前を指すと AWS CLI がエラーになるので、無ければ設定しない。
+  local shim="${AWSENV_SHIM_PROFILE:-awsenv}"
+  if aws configure list-profiles 2>/dev/null | grep -qx -- "$shim"; then
+    export AWS_PROFILE="$shim"
+  else
+    echo "awsenv: 中継用プロファイル '$shim' がありません。作成してください:" >&2
+    echo "  aws configure set region ap-northeast-1 --profile $shim" >&2
+  fi
+
+  # 展開元のプロファイル名。starship の [custom.awsenv] が読む。
+  export AWSENV_PROFILE="$profile"
+
+  local region
+  region="$(aws configure get region --profile "$profile" 2>/dev/null)"
+  if [ -n "$region" ]; then
+    export AWS_REGION="$region" AWS_DEFAULT_REGION="$region"
+  fi
+
+  echo "awsenv: $profile (root=$root, region=${AWS_REGION:-未設定}, 失効 ${AWS_CREDENTIAL_EXPIRATION:-なし}, AWS_PROFILE=${AWS_PROFILE:-未設定})"
+}
 
 # ghq & peco
 bindkey '^\' peco-src
