@@ -3,7 +3,7 @@
 "aqua:k1LoW/git-wt" = "0.30.0"
 "aqua:k1LoW/mo" = "v1.7.0"
 "aqua:yukiarrr/ecsk" = "0.9.5"
-aws-cli = { version = "2.38.5", symlink_bins = "true" }
+aws-cli = { version = "2.39.0", symlink_bins = "true" }
 aws-vault = "7.9.15"
 claude = "latest"
 direnv = "2.38.2"
