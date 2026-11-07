@@ -8,7 +8,7 @@ aws-vault = "7.9.15"
 claude = "latest"
 direnv = "2.38.2"
 gh = "2.103.3"
-ghq = "1.11.2"
+ghq = "1.12.0"
 git-lfs = "3.8.1"
 "github:microsoft/waza" = "v0.39.1"
 glab = { version = "1.92.1", exe = "glab" }
