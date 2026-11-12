@@ -24,6 +24,26 @@
       internalChecksFilter: 'strict',
     },
     {
+      description: 'x/toolsのcmdはモジュールではなくGo proxyで引けず、リリース日時が取れないので、モジュール本体で引く',
+      matchDatasources: [
+        'go',
+      ],
+      matchPackageNames: [
+        'golang.org/x/tools/cmd/**',
+      ],
+      overridePackageName: 'golang.org/x/tools',
+    },
+    {
+      description: 'x/vulnのcmdはモジュールではなくGo proxyで引けず、リリース日時が取れないので、モジュール本体で引く',
+      matchDatasources: [
+        'go',
+      ],
+      matchPackageNames: [
+        'golang.org/x/vuln/cmd/**',
+      ],
+      overridePackageName: 'golang.org/x/vuln',
+    },
+    {
       description: 'Delay non-security GitHub Actions updates to reduce supply-chain risk',
       matchManagers: [
         'github-actions',
