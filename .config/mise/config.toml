@@ -7,7 +7,7 @@ aws-cli = { version = "2.40.1", symlink_bins = "true" }
 aws-vault = "7.9.15"
 claude = "latest"
 direnv = "2.38.2"
-gh = "2.103.3"
+gh = "2.104.0"
 ghq = "1.12.0"
 git-lfs = "3.8.1"
 "github:microsoft/waza" = "v0.40.1"
