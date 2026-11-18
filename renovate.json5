@@ -7,6 +7,8 @@
     'github-actions',
     'mise',
   ],
+  // 実行が1日1回なので、時間あたりの上限(デフォルト2)だと1日2件しかPRが作られない
+  prHourlyLimit: 0,
   dependencyDashboard: {
     enabled: true,
   },
