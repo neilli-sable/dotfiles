@@ -44,6 +44,16 @@
       overridePackageName: 'golang.org/x/vuln',
     },
     {
+      description: 'staticcheckのcmdはモジュールではなくGo proxyで引けず、リリース日時が取れないので、モジュール本体で引く',
+      matchDatasources: [
+        'go',
+      ],
+      matchPackageNames: [
+        'honnef.co/go/tools/cmd/**',
+      ],
+      overridePackageName: 'honnef.co/go/tools',
+    },
+    {
       description: 'Delay non-security GitHub Actions updates to reduce supply-chain risk',
       matchManagers: [
         'github-actions',
